@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const users = [
     {name: 'Sarah', age: 20},
@@ -7,9 +7,15 @@ const users = [
     {name: 'Michael', age: 33}
 ];
 
-const UserSearch: React.FC = () => {
+const UserSearchRefs: React.FC = () => {
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
     const [name, setName] = useState('');
     const [user, setUser] = useState<{ name: string, age: number } | undefined>();
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    }, []);
 
     const onClick = () => {
         const foundUser = users.find((user) => user.name === name);
@@ -20,7 +26,7 @@ const UserSearch: React.FC = () => {
     return (
         <div>
             <h1>Find User</h1>
-            <input type="text" value={name} onChange={({ target }) => setName(target.value)}/>
+            <input ref={inputRef} type="text" value={name} onChange={({ target }) => setName(target.value)}/>
             <button onClick={onClick}>Find user</button>
             <div>
                 <div>{user?.name}</div>
@@ -30,4 +36,4 @@ const UserSearch: React.FC = () => {
     );
 }
 
-export default UserSearch;
+export default UserSearchRefs;

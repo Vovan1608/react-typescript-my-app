@@ -3,6 +3,7 @@ import GuestList from '../state/GuestList';
 import UserSearch from '../state/UserSearch';
 import EventComponent from '../events/EventComponent';
 import UserSearchComponent from '../classes/UserSearchComponent';
+import UserSearchRefs from '../refs/UserSearchRefs';
 
 const App = () => <div><h2>Hi there!</h2></div>;
 
@@ -15,7 +16,7 @@ const users = [
 
 const Parent = () => {
     return (
-        <UserSearchComponent users={users}/>
+        <UserSearchRefs />
     );
 };
 
