@@ -19,6 +19,7 @@ const UserSearch: React.FC = () => {
 
     return (
         <div>
+            <h1>Find User</h1>
             <input type="text" value={name} onChange={({ target }) => setName(target.value)}/>
             <button onClick={onClick}>Find user</button>
             <div>
